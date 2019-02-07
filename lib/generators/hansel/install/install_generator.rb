@@ -21,10 +21,7 @@ module Hansel
     end
 
     def migration_version
-      major = ActiveRecord::VERSION::MAJOR
-      if major >= 5
-        "[#{major}.#{ActiveRecord::VERSION::MINOR}]"
-      end
+      "[#{ActiveRecord::VERSION::MAJOR}.#{ActiveRecord::VERSION::MINOR}]"
     end
   end
 end

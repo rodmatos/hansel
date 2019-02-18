@@ -1,8 +1,15 @@
 # Hansel
-Short description and motivation.
+Hansel is tiny library that tracks change to followed models, has support for both syncronous tracking and asynchronous via the different ActiveJob backends that you can plug into your Rails application.
+Currently only supports for PostgreSQL databases.
 
 ## Usage
-How to use my plugin.
+Import the concern in the models that you wish to track
+```ruby
+class Human < ApplicationRecord
+  include Hansel::Recordable
+end
+```
+And after every change to an `Human` record you can access its states through the `has_many :records` relationship - e.g. `Human.first.records # []`
 
 ## Installation
 Add this line to your application's Gemfile:
@@ -13,16 +20,18 @@ gem 'hansel'
 
 And then execute:
 ```bash
-$ bundle
+$ bundle install
 ```
 
-Or install it yourself as:
+Generate schema migration:
 ```bash
-$ gem install hansel
+$ rails generate hansel:install
 ```
 
-## Contributing
-Contribution directions go here.
+Migrate your database:
+```bash
+$ rails db:migrate
+```
 
 ## License
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).

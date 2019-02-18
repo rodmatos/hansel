@@ -11,4 +11,4 @@ spec/dummy/storage/
 spec/dummy/tmp/
 Gemfile.lock
 Guardfile
-
+.byebug_history

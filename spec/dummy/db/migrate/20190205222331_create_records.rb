@@ -1,10 +1,10 @@
 class CreateRecords < ActiveRecord::Migration[5.2]
   def change
     create_table :records do |t|
-      t.jsonb :fields
-      t.jsonb :metadata
+      t.jsonb :fields, default: {}
+      t.jsonb :metadata, default: {}
       t.datetime :created_at
+      t.references :recordable, polymorphic: true, index: true
     end
-    add_index :records, :hansel_records
   end
 end

@@ -6,9 +6,9 @@ module Hansel
     extend ActiveSupport::Concern
 
     included do
-      has_many :records, as: :recordable
+      has_many :records, as: :recordable, class_name: 'Hansel::Record'
       after_commit do
-        CreateRecordJob.perform_later(class_name, id)
+        CreateRecordJob.perform_later(self.class.name, id, {})
       end
     end
   end

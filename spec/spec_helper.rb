@@ -1,5 +1,4 @@
 ENV["RAILS_ENV"] ||= "test"
-ENV["DB"] ||= "sqlite"
 
 require 'byebug'
 require File.expand_path('dummy/config/environment', __dir__)

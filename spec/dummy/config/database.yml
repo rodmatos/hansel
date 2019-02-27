@@ -10,6 +10,5 @@ test:
   adapter: postgresql
   encoding: unicode
   database: hansel_dummy_test
+  username: postgres
   pool: 5
-  username: hansel
-  password: password1

@@ -1,0 +1,16 @@
+language: ruby
+rvm:
+ - 2.5
+before_install:
+  - gem update --system
+  - gem install bundler
+
+services:
+  - postgresql
+script:
+  - cd spec/dummy
+  - bundle exec rails g hansel:install
+  - bin/rake db:create
+  - bin/rake db:migrate RAILS_ENV=test
+  - cd ../../
+  - bundle exec rspec spec/

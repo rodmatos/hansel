@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/rodmatos/hansel.svg?branch=master)](https://travis-ci.org/rodmatos/hansel)
+
 # Hansel
 Hansel is tiny library that tracks change to followed models, has support for both syncronous tracking and asynchronous via the different ActiveJob backends that you can plug into your Rails application.
 Currently only supports for PostgreSQL databases.

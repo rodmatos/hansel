@@ -10,6 +10,7 @@ module Hansel
           recordable: model,
           fields: model.attributes,
           metadata: metadata,
+          previous_record: Hansel::Record.where(recordable_id: id).last
         )
       end
     end

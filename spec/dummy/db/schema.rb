@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_05_222331) do
+ActiveRecord::Schema.define(version: 2019_02_27_123558) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,12 +20,15 @@ ActiveRecord::Schema.define(version: 2019_02_05_222331) do
   end
 
   create_table "records", force: :cascade do |t|
-    t.jsonb "fields", default: {}
-    t.jsonb "metadata", default: {}
-    t.datetime "created_at"
+    t.json "fields", default: {}
+    t.json "metadata", default: {}
     t.string "recordable_type"
     t.bigint "recordable_id"
+    t.bigint "previous_record_id"
+    t.datetime "created_at"
+    t.index ["previous_record_id"], name: "index_records_on_previous_record_id"
     t.index ["recordable_type", "recordable_id"], name: "index_records_on_recordable_type_and_recordable_id"
   end
 
+  add_foreign_key "records", "records", column: "previous_record_id"
 end

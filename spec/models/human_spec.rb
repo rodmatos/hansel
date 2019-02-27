@@ -8,15 +8,15 @@ RSpec.describe Human, type: :model do
 
   it 'has many records' do
     expect(human.records.size).to eq(1)
-    expect(human.records[0]).to have_attributes(class: Hansel::Record, fields: { "id" => human.id, "name" => human.name})
+    expect(human.records.last).to have_attributes(class: Hansel::Record, fields: { "id" => human.id, "name" => human.name})
   end
 
   it 'is a human with a record' do
     old_name = human.name
     human.update_attributes(name: 'Jane Doe')
     expect(human.records.size).to eq(2)
-    expect(human.records[0]).to have_attributes(class: Hansel::Record, fields: { "id" => human.id, "name" => old_name})
+    expect(human.records.first).to have_attributes(class: Hansel::Record, fields: { "id" => human.id, "name" => old_name})
 
-    expect(human.records[1]).to have_attributes(class: Hansel::Record, fields: { "id" => human.id, "name" => human.name})
+    expect(human.records.last).to have_attributes(class: Hansel::Record, fields: { "id" => human.id, "name" => human.name }, "previous_record_id" => human.records.first.id)
   end
 end

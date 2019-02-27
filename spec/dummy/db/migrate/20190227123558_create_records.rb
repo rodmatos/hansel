@@ -1,4 +1,4 @@
-class CreateRecords < ActiveRecord::Migration<%= migration_version %>
+class CreateRecords < ActiveRecord::Migration[5.2]
   def change
     create_table :records do |t|
       t.json :fields, default: {}

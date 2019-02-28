@@ -19,4 +19,23 @@ RSpec.describe Human, type: :model do
 
     expect(human.records.last).to have_attributes(class: Hansel::Record, fields: { "id" => human.id, "name" => human.name }, "previous_record_id" => human.records.first.id)
   end
+
+
+  describe 'custom serializer' do
+  it 'uses custom serializer' do
+    c = Class.new do
+      define_method(:initialize) do |human|
+        @name = human.name
+      end
+      define_method(:as_json) do |options|
+        { name: @name, custom_serializer: true }
+      end
+    end
+    Kernel.const_set "HumanSerializer", c
+
+    human.update_attributes!(name: 'Elon Musk')
+    expect(human.records.size).to eq(2)
+    expect(human.records.last).to have_attributes(class: Hansel::Record, fields: { "name" => human.name, "custom_serializer" => true })
+  end
+  end
 end

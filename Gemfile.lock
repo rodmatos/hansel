@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    hansel (0.0.1)
+    hansel-tracking (0.0.1)
       rails (~> 5.0)
 
 GEM
@@ -193,7 +193,7 @@ DEPENDENCIES
   byebug
   faker
   guard
-  hansel!
+  hansel-tracking!
   pg (~> 1.0)
   rspec-rails
   rubocop

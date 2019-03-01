@@ -5,7 +5,7 @@ require "hansel/version"
 
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |spec|
-  spec.name        = "hansel"
+  spec.name        = "hansel-tracking"
   spec.version     = Hansel::VERSION
   spec.authors     = ["Rodolfo Matos"]
   spec.email       = ["rod@rodmatos.xyz"]
